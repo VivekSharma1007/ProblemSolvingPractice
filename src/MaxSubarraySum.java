@@ -21,7 +21,9 @@ public class MaxSubarraySum {
 
     public static void main(String[] args) {
 //        int arr[] = {1, -2, 6, -1, 3};
-        int arr[] = {2, -1, -3, -4, 10};
+//        int arr[] = {2, -1, -3, -4, 10};
+        int arr[] = {6, -2, 7, -4, -8, 1, 7, -1, 6};
+
         maxSumSubArray(arr);
     }
 }
