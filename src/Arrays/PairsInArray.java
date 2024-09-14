@@ -1,3 +1,5 @@
+package Arrays;
+
 public class PairsInArray {
 
 //    TC = O(n*2)

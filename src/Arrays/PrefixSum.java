@@ -1,5 +1,9 @@
+package Arrays;
+
 public class PrefixSum {
 
+//    TC = O(n*2)
+//    this will not work when all values are negative, we just have to directly find the largest values from the array
     public static void prefixArraySum(int arr[]) {
         int prefixSumArray[] = new int[arr.length];
         prefixSumArray[0] = arr[0];
@@ -37,7 +41,8 @@ public class PrefixSum {
     public static void main(String[] args) {
 //        int arr[] = {1, -2, 6, -1, 3};
 //        int arr[] = {2, -1, -3, -4, 10};
-          int arr[] = {6, -2, 7, -4, -8, 1, 7, -1, 6};
+//        int arr[] = {6, -2, 7, -4, -8, 1, 7, -1, 6};
+        int arr[] = {-6, -4, -5, -7, -2, -3};
 
         prefixArraySum(arr);
     }
