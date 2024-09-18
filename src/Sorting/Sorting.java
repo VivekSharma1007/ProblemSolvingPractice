@@ -38,6 +38,23 @@ public class Sorting {
         print("Selection Sort", arr);
     }
 
+    // pick an element from  unsorted part and place in the right pos in sorted array.
+    public static void insertionSort(int arr[]) {
+        for(int i = 1; i < arr.length; i++) {
+            int curr = arr[i];
+            int prev = i - 1;
+            // finding the correct position to insert
+            while(prev >= 0 && arr[prev] > curr) {
+                arr[prev + 1] = arr[prev];  // when we find that prev element is larger than the current element
+                // we are moving the previous element to the next place to keep the place for insertion
+                prev--;
+            }
+            // insertion
+            arr[prev + 1] = curr;
+        }
+        print("Insertion Sort ", arr);
+    }
+
     public static void print(String str, int arr[]) {
         System.out.print(str + ": ");
         for(int n : arr) {
@@ -51,6 +68,7 @@ public class Sorting {
 
         bubbleSort(arr);
         selectionSort(arr);
+        insertionSort(arr);
 
 
     }
