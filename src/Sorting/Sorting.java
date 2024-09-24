@@ -55,6 +55,32 @@ public class Sorting {
         print("Insertion Sort ", arr);
     }
 
+    // count sort
+    public static void countSort(int arr[]) {
+        // frequency array
+        int maxValue = Integer.MIN_VALUE;
+        for(int i = 0; i < arr.length; i++) {
+            if(arr[i] > maxValue) {
+                maxValue = arr[i];
+            }
+        }
+        int count[] = new int[maxValue + 1];
+        for(int i = 0; i < arr.length; i++) {
+            count[arr[i]]++;
+        }
+
+        int arrIndex = 0;
+        for(int i = 0; i < count.length; i++) {
+            while(count[i] > 0) {
+                arr[arrIndex] = i;
+                arrIndex++;
+                count[i]--;
+            }
+        }
+
+        print("CountSort", arr);
+    }
+
     public static void print(String str, int arr[]) {
         System.out.print(str + ": ");
         for(int n : arr) {
@@ -69,6 +95,8 @@ public class Sorting {
         bubbleSort(arr);
         selectionSort(arr);
         insertionSort(arr);
+        int arr2[] = {1, 4, 1, 3, 2, 4, 3, 7};
+        countSort(arr2);
 
 
     }
