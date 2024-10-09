@@ -15,7 +15,6 @@ public class UsingComparable {
         Collections.sort(list); // will use comparable's compareTo method
         System.out.println(list);   */
 
-        /*
         List<Student> students = new ArrayList<>();
         students.add(new Student(7, "Vivek"));
         students.add(new Student(20, "Vaibhav"));
@@ -23,16 +22,16 @@ public class UsingComparable {
         students.add(new Student(5, "Manasvi"));
 
         Collections.sort(students);
-        System.out.println(students); */
+        System.out.println(students);
 
-        List<String> strlist = new ArrayList<>();
-        strlist.add("Johny");
-        strlist.add("Jack");
-        strlist.add("John");
-        strlist.add("Jill");
+//        List<String> strlist = new ArrayList<>();
+//        strlist.add("Johny");
+//        strlist.add("Jack");
+//        strlist.add("John");
+//        strlist.add("Jill");
 
-        Collections.sort(strlist);
-        System.out.println(strlist);
+        Collections.sort(students);
+        System.out.println(students);
 
     }
 }
@@ -57,9 +56,28 @@ class Student implements Comparable<Student> {
     }   */
 
     // on the basis of name
+//    @Override
+//    public int compareTo(Student o) {
+//        return this.name.compareToIgnoreCase(o.name);
+//    }
+
+
+    // on the basis of id and name if equals
+//    @Override
+//    public int compareTo(Student o) {
+//        int idComparison = this.id - o.id;
+//
+//        // if id's are equal
+//        // we sort using names
+//        if(idComparison == 0) {
+//            return this.name.compareToIgnoreCase(o.name);
+//        }
+//        return idComparison;
+//    }
+
     @Override
     public int compareTo(Student o) {
-        return this.name.compareToIgnoreCase(o.name);
+        return o.id - this.id;
     }
 
     @Override

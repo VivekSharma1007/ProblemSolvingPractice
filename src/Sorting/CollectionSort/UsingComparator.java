@@ -12,6 +12,7 @@ public class UsingComparator {
         users.add(new User(7, "Vivek"));
         users.add(new User(20, "Vaibhav"));
         users.add(new User(15, "Binny"));
+        users.add(new User(5, "Unknown"));
         users.add(new User(5, "Manasvi"));
 
         // one way
@@ -27,12 +28,23 @@ public class UsingComparator {
         };   */
 
         // another way
-//        Collections.sort(users, comp);
+        // Collections.sort(users, comp);
+        // System.out.println(users);
+
+        // on the basis of name
+        // Comparator<User> c1 = (o1, o2) -> o1.name.compareToIgnoreCase(o2.name);
+        // Collections.sort(users, c1);
 //        System.out.println(users);
 
-        Comparator<User> c1 = (o1, o2) -> o1.name.compareToIgnoreCase(o2.name);
-        Collections.sort(users, c1);
+
+        // for id = 5
+        // we have 2 elements
+
+        Comparator<User> comparator = Comparator.comparing(User::getId);
+        Comparator<User> comparator1 = Comparator.comparing(User::getId).thenComparing(User::getName); // chaining of comparator
+        Collections.sort(users, comparator1);
         System.out.println(users);
+
     }
 }
 
@@ -42,6 +54,22 @@ class User {
 
     public User(int id, String name) {
         this.id = id;
+        this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -57,8 +85,19 @@ class User {
 // when we want to create compare logic by ourself
 class MyIdComparator implements Comparator<User> {
 
+//    @Override
+//    public int compare(User o1, User o2) {
+//        return o1.id - o2.id;
+//    }
+
+    // when we have 2 or more id's with same value
     @Override
     public int compare(User o1, User o2) {
-        return o1.id - o2.id;
+        int idComparison = o1.id - o2.id;
+
+        if(idComparison == 0) {
+            return o1.name.compareToIgnoreCase(o2.name);
+        }
+        return idComparison;
     }
 }
