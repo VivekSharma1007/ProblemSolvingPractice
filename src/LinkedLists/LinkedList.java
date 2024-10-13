@@ -247,6 +247,52 @@ public class LinkedList {
         return true;
     }
 
+    public boolean isCircular() {
+        Node slow = head;
+        Node fast = head;
+
+        while(fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if(slow == fast) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Node isCircularNode() {
+        Node slow = head;
+        Node fast = head;
+
+        while(fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if(slow == fast) {
+                return slow;
+            }
+        }
+        return null;
+    }
+
+
+    public void removeCircular() {
+        Node fast = isCircularNode();
+        if(fast == null) {
+            return;
+        }
+        Node slow = head;
+
+        Node prev = fast;
+        while(slow != fast) {
+            prev = fast;
+            slow = slow.next;
+            fast = fast.next;
+        }
+        prev.next = null;
+        tail = prev;
+    }
+
 }
 
 

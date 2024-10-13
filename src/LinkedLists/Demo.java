@@ -53,10 +53,9 @@ public class Demo {
         list.addLast(2);
         list.addLast(1);
         list.print();
-        System.out.println(list.isPalindrome());
+//        System.out.println(list.isPalindrome());
 
-        list.addLast(2);
-        list.addLast(1);
-        System.out.println(list.isPalindrome());;
+        System.out.println(ll.isCircular());
+
     }
 }
