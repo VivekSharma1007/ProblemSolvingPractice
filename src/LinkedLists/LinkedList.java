@@ -293,6 +293,62 @@ public class LinkedList {
         tail = prev;
     }
 
+    private Node getMid(Node head) {
+        Node slow = head;
+        Node fast = head.next;
+        while(fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow; // node prev to mid node
+    }
+
+    private Node merge(Node left, Node right) {
+        Node  tempList = new Node(-1);
+        Node temp = tempList;
+        while(left != null && right != null) {
+            if(left.data <= right.data) {
+                temp.next = left;
+                temp = temp.next;
+                left = left.next;
+            } else {
+                temp.next = right;
+                temp = temp.next;
+                right = right.next;
+            }
+        }
+
+        while(left != null) {
+            temp.next = left;
+            temp = temp.next;
+            left = left.next;
+        }
+        while(right != null) {
+            temp.next = right;
+            temp = temp.next;
+            right = right.next;
+        }
+
+        return tempList.next;
+    }
+
+    public Node mergeSort(Node head) {
+        if(head == null || head.next == null) {
+            return head;
+        }
+
+        // find mid
+        Node mid = getMid(head);
+
+        Node rightHead = mid.next;
+        mid.next = null;
+
+        Node newLeft = mergeSort(head);
+        Node newRight = mergeSort(rightHead);
+
+        return merge(newLeft, newRight);
+    }
+
 }
 
 
