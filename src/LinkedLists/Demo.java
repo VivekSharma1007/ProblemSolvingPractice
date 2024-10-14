@@ -1,5 +1,4 @@
 package LinkedLists;
-import java.util.LinkedList;
 public class Demo {
 
 
@@ -51,26 +50,20 @@ public class Demo {
 //        System.out.println(ll.isPalindrome());
 
         LinkedList list = new LinkedList();
-//        list.addLast(1);
-//        list.addLast(2);
-//        list.addLast(1);
-//        list.print();
-//        System.out.println(list.isPalindrome());
 
-//        System.out.println(ll.isCircular());
 
-//        list.addLast(2);
-//        list.addLast(1);
-//        list.addLast(5);
-//        list.addLast(4);
-//        list.addLast(3);
-//
-//
-//        list.print();
-//
-//        list.mergeSort(list.head);
-//
-//        list.print();
+
+        list.addLast(1);
+        list.addLast(2);
+        list.addLast(3);
+        list.addLast(4);
+        list.addLast(5);
+
+        list.print();
+
+        list.zigZagLinkedlist();
+
+        list.print();
     }
 
 }

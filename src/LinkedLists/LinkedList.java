@@ -349,7 +349,64 @@ public class LinkedList {
         return merge(newLeft, newRight);
     }
 
+    public void zigZagLinkedlist() {
+        // find mid
+        Node slow = head;
+        Node fast = head.next;  // mid is last element of 1st half
+
+        while(fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        // divide in 2 halves
+        Node mid = slow;
+        Node rightHead = mid.next;
+        mid.next = null;
+
+       // reverse the 2nd half
+       Node prev = null;
+       Node current = rightHead;
+       Node next;
+
+       while(current != null) {
+           next = current.next;
+           current.next = prev; // where it breaks link to next and create link to prev
+           prev = current;
+           current = next;
+       }
+
+       rightHead = prev;
+
+
+        // zig zag
+        Node lhead = head;
+        Node rhead = rightHead;
+        Node tempNode = new Node(-1);
+        int i = 0;
+        while(lhead != null && rhead != null) {
+            if(i % 2 == 0) {
+                tempNode.next = lhead;
+                lhead = lhead.next;
+            } else {
+                tempNode.next = rhead;
+                rhead = rhead.next;
+            }
+            tempNode = tempNode.next;
+            i++;
+
+        }
+        while(lhead != null) {
+            tempNode.next = lhead;
+            lhead = lhead.next;
+            tempNode = tempNode.next;
+        }
+
+        while(rhead != null) {
+            tempNode.next = rhead;
+            rhead = rhead.next;
+            tempNode = tempNode.next;
+        }
+    }
+
 }
-
-
-
